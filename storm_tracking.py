@@ -1,16 +1,10 @@
 # -*- coding: utf-8 -*-
 """
-Created on Tue Nov 17 12:20:28 2020
-
-@author: at18707
-"""
-
-"""
 Created on Thu Apr 16 12:57:08 2020
 
 @author: Erin Walker
 
-Last Updated: 03/11/2020
+Last Updated: 17/11/2020
 
 Script that produces Figure 3 from 'The numerous approaches to
 tracking extratropical cyclones
@@ -32,7 +26,7 @@ import pandas as pd
 
 ### Ophelia ###
 
-dfophelia = pd.read_csv("input/NHC_Ophelia_best_track_2017.csv",skiprows=2, names = ['Date/Time','Lat','Lon','Pressure','Wind Speed (kt)', 'Hurricane Category'])
+dfophelia = pd.read_csv("NHC_Ophelia_best_track_2017.csv",skiprows=2, names = ['Date/Time','Lat','Lon','Pressure','Wind Speed (kt)', 'Hurricane Category'])
 
 dti = pd.date_range('2017-10-09', '2017-10-17 18:00:00', freq='6H')
 dti_new = dti.tz_localize('UTC')
@@ -46,7 +40,7 @@ nhc_track_ophelia['Lon'][:34] = -nhc_track_ophelia['Lon'][:34]
 
 ### Oscar ###
 
-dfoscar = pd.read_csv("input/NHC_Oscar_best_track_2018.csv")
+dfoscar = pd.read_csv("NHC_Oscar_best_track_2018.csv")
 
 ##Change date and time into readable
 dti = pd.date_range('2018-10-26 18:00:00', '2018-11-04 12:00:00', freq='6H')
@@ -68,7 +62,7 @@ nhc_track_oscar = dfoscar[['Date','Lat','Lon','Intensity (mb)']]
 ##########################################################################
 
 ### Ophelia ###
-df2_ophelia = pd.read_csv("input/MERRA_Ophelia_track_2017.csv",skiprows=2, names = ['Date','Time','Lat','Lon','Pressure'])
+df2_ophelia = pd.read_csv("MERRA_Ophelia_track_2017.csv",skiprows=2, names = ['Date','Time','Lat','Lon','Pressure'])
 
 dti2_ophelia = pd.date_range('2017-10-14 18:00:00', '2017-10-18 00:00:00', freq='6H')
 dti_new2_ophelia = dti2_ophelia.tz_localize('UTC')
@@ -83,7 +77,7 @@ mcms_track_ophelia = df2_ophelia[['Date','Lat','Lon','Pressure']]
 
 ### Oscar ###
 
-df2_oscar = pd.read_csv("input/MERRA_Oscar_track_2018.csv",skiprows=2, names = ['Date','Time','Lat','Lon','Pressure'])
+df2_oscar = pd.read_csv("MERRA_Oscar_track_2018.csv",skiprows=2, names = ['Date','Time','Lat','Lon','Pressure'])
 
 ##Change date and time into readable
 dti2_oscar = pd.date_range('2018-10-25 12:00:00', '2018-11-04 18:00:00', freq='6H')
@@ -99,7 +93,7 @@ mcms_track_oscar = df2_oscar[['Date','Lat','Lon','Pressure']]
 ##                       MASSEY    OPHELIA                               ##
 ###########################################################################
 
-fname = "input/era5_oct_2017_6hrly_mslp_L5_E4_S3_48hrs_NA-UK.txt"
+fname = "era5_oct_2017_6hrly_mslp_L5_E4_S3_48hrs_NA-UK.txt"
 trk_no = "1366"
 
 # read mslp data
@@ -140,9 +134,7 @@ lon = np.zeros((trk_np))
 lat = np.zeros((trk_np))
 intensity = np.zeros((trk_np))
 
-
 label_added= False
-
 
 fig,ax1 = plt.subplots(1,2, figsize=(10,10))
 m = Basemap(projection='cyl',llcrnrlat=10,urcrnrlat=70,llcrnrlon=-70,urcrnrlon=10,resolution='i',ax=ax1[0])    # region same as that defined in load_and_print_track.py
@@ -190,7 +182,7 @@ ax1[0].text(0,1.02,label,fontsize=14,transform=ax1[0].transAxes,va="bottom", ha=
 ##                       MASSEY    OSCAR                                 ##
 ###########################################################################
 
-fname = "input/era5_mslp_2018-2019_ondjfm_6hrly_L5_E4_S3_48hrs_NH-NH.txt"
+fname = "era5_mslp_2018-2019_ondjfm_6hrly_L5_E4_S3_48hrs_NH-NH.txt"
 trk_no = "2501"
 
 nlist = fname.split("\\")[7].split("_")
