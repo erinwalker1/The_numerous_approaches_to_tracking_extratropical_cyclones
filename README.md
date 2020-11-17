@@ -1,6 +1,6 @@
 # The_numerous_approaches_to_tracking_extratropical_cyclones
 
-Enclosed is the Python script that plots Figure 3 in "The numerous approaches to tracking ETCs and the challenges they present".
+Enclosed is the Python script that plots Figure 3 in Walker, E. et al. (2020) The numerous approaches to tracking ETCs and the challenges they present. (accepted in Weather, 2020)
 
 It plots both storms Ophelia (2017) and Oscar(2018) at 6 hourly timesteps using data from 3 different methods:
 
